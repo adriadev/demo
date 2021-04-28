@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+        xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+        xmlns:flowable="http://flowable.org/bpmn"
+        targetNamespace="Examples">
+
+    <process id="oneTaskProcess" name="The One Task Process">
+        <startEvent id="theStart" />
+        <sequenceFlow id="flow1" sourceRef="theStart" targetRef="update" />
+        <!--<userTask id="theTask" name="my task" flowable:assignee="${person.id}" />-->
+        <!--<sequenceFlow id="flow3" sourceRef="theTask" targetRef="update" />-->
+        <serviceTask id="update" name="update" flowable:expression="${entityToUpdate.setValue('updatedValue')}"/>
+        <sequenceFlow id="flow2" sourceRef="update" targetRef="theEnd" />
+        <endEvent id="theEnd" />
+    </process>
+
+</definitions>
